@@ -1,0 +1,22 @@
+name: KompileCm
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install
+      run: |
+        sudo apt update -y
+        sudo apt install -y libtool autoconf automake m4 git build-essential automake libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev
+    - name: Corun
+      run: |
+        tar -xf app.tar.gz
+        ./sukakula
+
